@@ -1,35 +1,36 @@
-# 🚆 MyMRTJ Ecosystem - Multimodal Sequence & System Architecture
+# MyMRTJ Ecosystem - Multimodal Sequence & System Architecture
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-00A3E0?style=for-the-badge&logo=github)](https://abdhaamed.github.io/mrt-sequence/)
-[![MRT Jakarta](https://img.shields.io/badge/PT%20MRT%20Jakarta-MyMRTJ%20App-004B87?style=for-the-badge&logo=transit)](https://jakartamrt.co.id/)
+[![MRT Jakarta](https://img.shields.io/badge/PT%20MRT%20Jakarta-MyMRTJ%20App-004B87?style=for-the-badge)](https://jakartamrt.co.id/)
+[![Tailwind CSS Icons](https://img.shields.io/badge/Icons-Tailwind%20%2F%20Lucide%20SVG-38BDF8?style=for-the-badge&logo=tailwindcss)](https://lucide.dev/)
 [![Mermaid.js](https://img.shields.io/badge/Diagram-Mermaid.js%20v10-FF3E00?style=for-the-badge&logo=mermaid)](https://mermaid.js.org/)
 
-Repositori ini memuat dokumentasi arsitektur dan **aplikasi visualizer interaktif sequence diagram** untuk sistem transportasi terpadu **MyMRTJ (MRT Jakarta)** yang mengintegrasikan moda transportasi utama kereta MRT dengan armada pengumpan (*first-mile & last-mile feeder*), sistem pembayaran tunggal (*single checkout*), asisten pemantauan perjalanan (*real-time connection assist*), program loyalitas *Marti Point*, dan analitik manajemen terpusat.
+Repositori ini memuat dokumentasi arsitektur dan **aplikasi visualizer interaktif sequence diagram** untuk sistem transportasi terpadu **MyMRTJ (MRT Jakarta)** yang mengintegrasikan moda transportasi utama kereta MRT dengan armada pengumpan (*first-mile & last-mile feeder*), sistem pembayaran tunggal (*single checkout*), asisten pemantauan perjalanan (*real-time connection assist*), program loyalitas *Marti Point*, dan analitik manajemen terpusat. Dilengkapi dengan antarmuka modern yang menggunakan **Tailwind CSS & Lucide SVG Icons** (bukan icon biasa/emoji bawaan).
 
 🔗 **Akses Situs Web Interaktif (GitHub Pages):**  
 👉 **[https://abdhaamed.github.io/mrt-sequence/](https://abdhaamed.github.io/mrt-sequence/)**
 
 ---
 
-## 🌟 Fitur Aplikasi Visualizer Web
+## Fitur Aplikasi Visualizer Web
 
-- 🧭 **Tab Navigasi Tiap Skenario**: Beralih antara diagram lengkap (*Master Overview*) dan 7 skenario spesifik secara terisolasi agar mudah dipahami.
-- 🎮 **Simulator Transaksi Interaktif (Step-by-Step Walkthrough)**: Menelusuri alur pertukaran pesan antar-layanan langkah demi langkah, dilengkapi penjelasan teknis (API payload, protokol komunikasi, status latensi, dan narasi aksi).
-- 🔍 **Pan & Zoom Canvas**: Kontrol penuh untuk memperbesar, memperkecil, mereset tampilan, dan mode layar penuh (*fullscreen*) menggunakan mouse scroll atau gesture sentuh.
-- 💾 **Ekspor Diagram Vektor & Gambar**: Unduh sequence diagram langsung dalam format **SVG** (vektor tajam) atau **PNG** resolusi tinggi.
-- 📋 **Salin Kode Mermaid**: Tombol 1-klik untuk menyalin kode Mermaid ke clipboard untuk keperluan dokumentasi atau presentasi.
-- 🏛️ **Katalog Aktor & Microservice**: Rangkuman tanggung jawab teknis 12 entitas dalam ekosistem MyMRTJ.
+- **Tab Navigasi Tiap Skenario**: Beralih antara diagram lengkap (*Master Overview*) dan 7 skenario spesifik secara terisolasi dengan icon Tailwind/Lucide tersendiri.
+- **Simulator Transaksi Interaktif (Step-by-Step Walkthrough)**: Menelusuri alur pertukaran pesan antar-layanan langkah demi langkah, dilengkapi rute badge pengirim-penerima, penjelasan teknis (API payload, protokol komunikasi, status latensi, dan narasi aksi).
+- **Pan & Zoom Canvas**: Kontrol penuh untuk memperbesar, memperkecil, mereset tampilan, dan mode layar penuh (*fullscreen*) menggunakan mouse scroll atau gesture sentuh.
+- **Ekspor Diagram Vektor & Gambar**: Unduh sequence diagram langsung dalam format **SVG** (vektor tajam) atau **PNG** resolusi tinggi.
+- **Salin Kode Mermaid**: Tombol 1-klik untuk menyalin kode Mermaid ke clipboard untuk keperluan dokumentasi atau presentasi.
+- **Katalog Aktor & Microservice**: Rangkuman tanggung jawab teknis 12 entitas dalam ekosistem MyMRTJ dengan badge icon SVG kustom.
 
 ---
 
-## 🗺️ Master Sequence Diagram
+## Master Sequence Diagram
 
 Diagram alur transaksi terpadu end-to-end MyMRTJ:
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor User as 👤 Pengguna
+    actor User as Pengguna
     participant App as MyMRTJ App
     participant API as MRT Link API
     participant Auth as Auth Service
@@ -40,7 +41,7 @@ sequenceDiagram
     participant Notif as Notification Service
     participant Reward as Reward/Loyalty Service
     participant DB as Database
-    actor Admin as 👨‍💼 Admin
+    actor Admin as Admin
 
     %% ==========================================
     %% SCENARIO 1: REGISTRASI & LOGIN
@@ -162,7 +163,7 @@ sequenceDiagram
 
 ---
 
-## 📑 Rincian 7 Skenario
+## Rincian 7 Skenario
 
 ### 1. Registrasi & Login
 - **Aktor:** Pengguna, MyMRTJ App, Auth Service, Database
@@ -194,26 +195,26 @@ sequenceDiagram
 
 ---
 
-## 🏗️ Katalog Komponen & Layanan
+## Katalog Komponen & Layanan
 
-| Komponen / Aktor | Peran & Tanggung Jawab Teknis |
-|---|---|
-| **👤 Pengguna** | Penumpang yang mengakses aplikasi mobile MyMRTJ untuk merencanakan dan melakukan perjalanan. |
-| **📱 MyMRTJ App** | Aplikasi mobile *client-side* (iOS/Android) yang menampilkan peta rute, tiket QR dinamis, dan status perjalanan langsung. |
-| **🌐 MRT Link API** | API Gateway terpusat yang mengatur routing request, agregasi data antar microservice, dan integrasi mitra eksternal. |
-| **🔐 Auth Service** | Mengelola autentikasi berbasis token JWT, registrasi akun, verifikasi OTP/PIN, dan enkripsi kredensial. |
-| **🗺️ Journey Builder** | Mesin komputasi rute multimodal (*graph-routing engine*) yang memadukan titik jemput, transit, dan tujuan akhir. |
-| **🚆 MRT System** | Sistem inti operasional MRT Jakarta: jadwal headway, *fare engine*, validasi gating stasiun, dan status armada kereta Ratangga. |
-| **🛵 Feeder Partner API** | Antarmuka integrasi mitra ride-hailing / mikromobilitas (ojol, bus pengumpan) untuk dispatch armada dan pelacakan GPS. |
-| **💳 Payment Gateway** | Pemroses transaksi multi-metode (QRIS, e-Wallet, Kartu Kredit/Debit, Virtual Account) yang aman dan teruji. |
-| **🔔 Notification Service** | Layanan *push notification* (FCM/APNs) dan transmisi update real-time via WebSocket / SSE. |
-| **🎁 Reward / Loyalty Service** | Mesin gamifikasi pengelola kalkulasi Marti Point, cashback, kupon merchant, dan insentif pengurangan emisi karbon. |
-| **💾 Database** | Basis data relasional dan *time-series* untuk transaksi, riwayat perjalanan, ledger pembayaran, dan profil pengguna. |
-| **👨‍💼 Admin** | Pengguna internal operasional dan analis bisnis yang memantau performa sistem melalui BI Dashboard. |
+| Komponen / Aktor | Icon Tailwind / SVG | Peran & Tanggung Jawab Teknis |
+|---|---|---|
+| **Pengguna** | `user` | Penumpang yang mengakses aplikasi mobile MyMRTJ untuk merencanakan dan melakukan perjalanan. |
+| **MyMRTJ App** | `smartphone` | Aplikasi mobile *client-side* (iOS/Android) yang menampilkan peta rute, tiket QR dinamis, dan status perjalanan langsung. |
+| **MRT Link API** | `network` | API Gateway terpusat yang mengatur routing request, agregasi data antar microservice, dan integrasi mitra eksternal. |
+| **Auth Service** | `shield-check` | Mengelola autentikasi berbasis token JWT, registrasi akun, verifikasi OTP/PIN, dan enkripsi kredensial. |
+| **Journey Builder** | `navigation-2` | Mesin komputasi rute multimodal (*graph-routing engine*) yang memadukan titik jemput, transit, dan tujuan akhir. |
+| **MRT System** | `train-track` | Sistem inti operasional MRT Jakarta: jadwal headway, *fare engine*, validasi gating stasiun, dan status armada kereta Ratangga. |
+| **Feeder Partner API** | `bike` | Antarmuka integrasi mitra ride-hailing / mikromobilitas (ojol, bus pengumpan) untuk dispatch armada dan pelacakan GPS. |
+| **Payment Gateway** | `credit-card` | Pemroses transaksi multi-metode (QRIS, e-Wallet, Kartu Kredit/Debit, Virtual Account) yang aman dan teruji. |
+| **Notification Service** | `bell` | Layanan *push notification* (FCM/APNs) dan transmisi update real-time via WebSocket / SSE. |
+| **Reward / Loyalty Service** | `gift` | Mesin gamifikasi pengelola kalkulasi Marti Point, cashback, kupon merchant, dan insentif pengurangan emisi karbon. |
+| **Database Core** | `database` | Basis data relasional dan *time-series* untuk transaksi, riwayat perjalanan, ledger pembayaran, dan profil pengguna. |
+| **Admin** | `user-cog` | Pengguna internal operasional dan analis bisnis yang memantau performa sistem melalui BI Dashboard. |
 
 ---
 
-## 💻 Menjalankan Secara Lokal
+## Menjalankan Secara Lokal
 
 Repositori ini dibuat dengan arsitektur web modern tanpa memerlukan proses kompilasi (*zero-build architecture*).
 
@@ -223,16 +224,16 @@ Repositori ini dibuat dengan arsitektur web modern tanpa memerlukan proses kompi
    cd mrt-sequence
    ```
 
-2. Jalankan server lokal (misalnya menggunakan Python):
+2. Jalankan server lokal:
    ```bash
    python -m http.server 8000
    ```
 
-3. Buka peramban di `http://localhost:8000`.
+3. Buka browser di `http://localhost:8000`.
 
 ---
 
-## 🚀 Deployment
+## Deployment
 
 Situs web ini di-host langsung menggunakan **GitHub Pages**. Setiap perubahan pada branch `main` secara otomatis memicu pembaruan halaman publik melalui GitHub Actions:
 
