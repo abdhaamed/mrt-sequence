@@ -1,19 +1,16 @@
-/* MyMRTJ Sequence Visualizer Stylesheet */
+/* MyMRTJ Sequence Diagram Preview Stylesheet */
 :root {
   --mrt-navy: #0F2042;
   --mrt-blue: #004B87;
   --mrt-bright-blue: #0072CE;
   --mrt-cyan: #00A3E0;
   --mrt-green: #00A651;
-  --mrt-yellow: #FFB81C;
-  --mrt-red: #ED1C24;
-  --bg-main: #0B132B;
-  --bg-card: rgba(18, 30, 60, 0.75);
-  --border-color: rgba(255, 255, 255, 0.12);
+  --bg-main: #080E1F;
 }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: var(--bg-main);
 }
 
 /* Custom scrollbars */
@@ -35,7 +32,7 @@ body {
   background: rgba(0, 163, 224, 0.6);
 }
 
-/* Glassmorphism effects */
+/* Glassmorphism panel */
 .glass-panel {
   background: rgba(15, 29, 58, 0.65);
   backdrop-filter: blur(16px);
@@ -43,33 +40,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.glass-card {
-  background: rgba(21, 39, 78, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 163, 224, 0.15);
-  transition: all 0.25s ease;
-}
-
-.glass-card:hover {
-  border-color: rgba(0, 163, 224, 0.4);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgba(0, 75, 135, 0.25);
-}
-
-/* MRT Gradient Header */
-.mrt-gradient-text {
-  background: linear-gradient(135deg, #00A3E0 0%, #00D2C4 50%, #00A651 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.mrt-gradient-badge {
-  background: linear-gradient(135deg, rgba(0, 75, 135, 0.7) 0%, rgba(0, 163, 224, 0.5) 100%);
-  border: 1px solid rgba(0, 163, 224, 0.35);
-}
-
-/* Diagram Container Styles */
+/* Diagram Viewport & Canvas */
 #diagram-viewport {
   cursor: grab;
   user-select: none;
@@ -87,26 +58,57 @@ body {
   font-family: inherit !important;
 }
 
-/* Step active highlight in simulator */
-.step-item {
-  transition: all 0.2s ease;
+/* Mermaid Sequence Diagram Overrides for dark theme */
+.mermaid-dark .actor {
+  stroke: #00A3E0 !important;
+  fill: #15274E !important;
+  stroke-width: 1.5px !important;
+  font-weight: 600 !important;
 }
 
-.step-item.active-step {
-  border-left: 3px solid #00A3E0;
-  background: rgba(0, 163, 224, 0.15);
+.mermaid-dark text.actor > tspan {
+  fill: #F0F6FC !important;
+  font-weight: 600 !important;
 }
 
-/* Pulse animation for active node indicator */
-@keyframes pulseGlow {
-  0%, 100% {
-    box-shadow: 0 0 15px rgba(0, 163, 224, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 25px rgba(0, 163, 224, 0.8);
-  }
+.mermaid-dark .actor-line {
+  stroke: rgba(0, 163, 224, 0.3) !important;
+  stroke-dasharray: 4 4 !important;
 }
 
-.glow-active {
-  animation: pulseGlow 2s infinite ease-in-out;
+.mermaid-dark .messageLine0,
+.mermaid-dark .messageLine1 {
+  stroke: #38BDF8 !important;
+  stroke-width: 1.5px !important;
+}
+
+.mermaid-dark #arrowhead path {
+  fill: #38BDF8 !important;
+  stroke: #38BDF8 !important;
+}
+
+.mermaid-dark .messageText {
+  fill: #E2E8F0 !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+}
+
+.mermaid-dark .note {
+  stroke: #FFB81C !important;
+  fill: rgba(30, 41, 59, 0.95) !important;
+}
+
+.mermaid-dark .noteText {
+  fill: #FCD34D !important;
+  font-weight: 600 !important;
+}
+
+.mermaid-dark .labelText {
+  fill: #E2E8F0 !important;
+}
+
+.mermaid-dark .loopText,
+.mermaid-dark .loopLine {
+  stroke: #00A651 !important;
+  fill: #00A651 !important;
 }
